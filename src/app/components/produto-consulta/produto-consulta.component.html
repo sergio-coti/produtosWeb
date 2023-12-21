@@ -1,0 +1,43 @@
+<div class="container mt-3">
+
+    <h3>Consulta de produtos</h3>
+    <p>Visualize os produtos cadastrados e seus estoques e categorias.</p>
+
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Nome do produto</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Fornecedor</th>
+                <th>Categoria</th>
+                <th>Operações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of produtos">
+                <td>{{p.nome}}</td>
+                <td>{{p.preco}}</td>
+                <td>{{p.quantidade}}</td>
+                <td>{{p.fornecedor.nome}}</td>
+                <td>{{p.categoria.nome}}</td>
+                <td>
+                    <button class="btn btn-outline-primary btn-sm">
+                        Editar
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm ms-2">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6">
+                   Quantidade de produtos: {{produtos.length}}
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>

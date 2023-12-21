@@ -1,0 +1,64 @@
+<div class="container mt-3">
+
+    <h3>Cadastro de produtos</h3>
+    <p>Preencha o formulário para incluir um produto.</p>
+
+    <div class="text-success mb-2">
+        <strong>{{mensagemSucesso}}</strong>
+    </div>
+
+    <div class="text-danger mb-2">
+        <strong>{{mensagemErro}}</strong>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="row mb-3">
+            <div class="col">
+                <label>Nome do produto:</label>
+                <input type="text" class="form-control" placeholder="Digite o nome aqui."
+                    formControlName="nome"/>
+            </div>
+            <div class="col">
+                <label>Preço:</label>
+                <input type="text" class="form-control" placeholder="Digite o preço aqui."
+                    formControlName="preco"/>
+            </div>
+            <div class="col">
+                <label>Quantidade:</label>
+                <input type="text" class="form-control" placeholder="Digite a quantidade aqui."
+                    formControlName="quantidade"/>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label>Selecione o fornecedor do produto:</label>
+                <select class="form-select" formControlName="idFornecedor">
+                    <option value="">Escolha uma opção</option>
+                    <option *ngFor="let f of fornecedores" value="{{f.idFornecedor}}">
+                        {{f.nome}} CNPJ: {{f.cnpj}}
+                    </option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Selecione a categoria do produto:</label>
+                <select class="form-select" formControlName="idCategoria">
+                    <option value="">Escolha uma opção</option>
+                    <option *ngFor="let c of categorias" value="{{c.idCategoria}}">
+                        {{c.nome}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <input type="submit" class="btn btn-success"
+                    value="Realizar Cadastro"/>
+            </div>
+        </div>
+
+    </form>
+
+</div>

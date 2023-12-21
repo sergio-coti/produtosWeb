@@ -1,0 +1,60 @@
+<div class="row mt-5">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-center">
+                    <h3>Acessar Sistema</h3>
+                    <p>Entre com os seus dados de usuário</p>
+                </div>
+
+                <div class="text-danger mb-2 text-center">
+                    <strong>{{mensagemErro}}</strong>
+                </div>
+                
+                <form [formGroup]="form" (ngSubmit)="submit()">
+
+                    <div class="mb-3">
+                        <label>Email de acesso:</label>
+                        <input type="text" class="form-control" 
+                            placeholder="Digite o email aqui."
+                            formControlName="email"/>
+                        
+                        <div *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">   
+                            <span *ngIf="f['email'].errors && f['email'].errors['required']">
+                                Por favor, informe o seu email de acesso.
+                            </span>
+                            <span *ngIf="f['email'].errors && f['email'].errors['email']">
+                                Por favor, informe um endereço de email válido.
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <label>Senha de acesso:</label>
+                        <input type="password" class="form-control"
+                            placeholder="Digite a senha aqui."
+                            formControlName="senha"/>
+
+                        <div *ngIf="f['senha'].touched && f['senha'].invalid" class="text-danger">   
+                            <span *ngIf="f['senha'].errors && f['senha'].errors['required']">
+                                Por favor, informe a sua senha de acesso.
+                            </span>
+                            <span *ngIf="f['senha'].errors && f['senha'].errors['minlength']">
+                                Por favor, informe no mínimo 8 caracteres.
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="mb-3 d-grid">
+                        <button type="submit" class="btn btn-primary" 
+                            [disabled]="form.invalid">
+                            Entrar no sistema
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

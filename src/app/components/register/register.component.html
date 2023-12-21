@@ -1,0 +1,99 @@
+<div class="row mt-5">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="text-center">
+                    <h3>Criar Conta de Usuário</h3>
+                    <p>Entre com os seus dados de usuário</p>
+                </div>
+
+                <div class="text-success mb-2 text-center">
+                    <strong>{{mensagemSucesso}}</strong>
+                </div>
+
+                <div class="text-danger mb-2 text-center">
+                    <strong>{{mensagemErro}}</strong>
+                </div>
+                
+                <form [formGroup]="form" (ngSubmit)="submit()">
+
+                    <div class="mb-3">
+                        <label>Nome do usuário:</label>
+                        <input type="text" class="form-control"
+                            formControlName="nome"
+                            placeholder="Digite o nome aqui."/>
+                        
+                        <span *ngIf="f['nome'].touched && f['nome'].invalid" class="text-danger">
+                            <span *ngIf="f['nome'].errors && f['nome'].errors['required']">
+                                Por favor, informe o seu nome.
+                            </span>
+                            <span *ngIf="f['nome'].errors && f['nome'].errors['minlength']">
+                                Por favor, informe no mínimo 8 caracteres.
+                            </span>
+                        </span>
+
+                    </div>
+                    <div class="mb-3">
+                        <label>Email de acesso:</label>
+                        <input type="text" class="form-control" 
+                            formControlName="email"
+                            placeholder="Digite o email aqui."/>
+
+                        <span *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">
+                            <span *ngIf="f['email'].errors && f['email'].errors['required']">
+                                Por favor, informe o seu email.
+                            </span>
+                            <span *ngIf="f['email'].errors && f['email'].errors['email']">
+                                Por favor, informe um endereço de email válido.
+                            </span>
+                        </span>
+
+                    </div>
+                    <div class="mb-3">
+                        <label>Senha de acesso:</label>
+                        <input type="password" class="form-control"
+                            formControlName="senha"
+                            placeholder="Digite a senha aqui."/>
+
+                        <span *ngIf="f['senha'].touched && f['senha'].invalid" class="text-danger">
+                            <span *ngIf="f['senha'].errors && f['senha'].errors['required']">
+                                Por favor, informe a sua senha.
+                            </span>
+                            <span *ngIf="f['senha'].errors && f['senha'].errors['pattern']">
+                                Por favor, informe a senha com letras maiúsculas, 
+                                letras minúsculas, números, símbolos e pelo menos 
+                                8 caracteres.
+                            </span>
+                        </span>
+
+                    </div>
+                    <div class="mb-3">
+                        <label>Confirme a senha:</label>
+                        <input type="password" class="form-control"
+                            formControlName="senhaConfirmacao"
+                            placeholder="Confirme a senha aqui."/>
+
+                        <span *ngIf="f['senhaConfirmacao'].touched && f['senhaConfirmacao'].invalid" class="text-danger">
+                            <span *ngIf="f['senhaConfirmacao'].errors && f['senhaConfirmacao'].errors['required']">
+                                Por favor, confirme a sua senha.
+                            </span>                            
+                        </span>
+
+                        <span class="text-danger">
+                            {{erroSenha}}
+                        </span>
+
+                    </div>
+                    <div class="mb-3 d-grid">
+                        <button type="submit" class="btn btn-primary" 
+                            [disabled]="form.invalid">
+                            Realizar Cadastro
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
